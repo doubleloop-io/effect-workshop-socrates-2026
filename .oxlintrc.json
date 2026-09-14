@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/@effect/tsgo/oxlint-schema.json",
+  "extends": ["./node_modules/@effect/tsgo/oxlint-presets/recommended.json"],
+  "rules": {
+    "eslint/no-unused-vars": "off",
+    "typescript/no-empty-object-type": "off",
+    "typescript/ban-ts-comment": "off",
+    "effecttsgo/global-date": "off",
+    "effecttsgo/global-date-in-effect": "off",
+    "effecttsgo/global-console-in-effect": "off",
+    "effecttsgo/global-console": "off",
+    "effecttsgo/async-function": "off",
+    "effecttsgo/node-builtin-import": "off",
+    "effecttsgo/prefer-typed-schema-decoder": "off"
+  },
+  "overrides": [
+    {
+      "files": ["src/exercises/1-basics/**/*.ts"],
+      "rules": {
+        "effecttsgo/global-error-in-effect-failure": "off",
+        "effecttsgo/multiple-effect-provide": "off"
+      }
+    }
+  ]
+}

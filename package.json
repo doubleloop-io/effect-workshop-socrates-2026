@@ -1,0 +1,40 @@
+{
+  "name": "effect-workshop-socrates-2026",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.1.1",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "test:solutions": "vitest run --dir src/solutions",
+    "test:exercises": "vitest run --dir src/exercises",
+    "test:w:exercises": "vitest watch --dir src/exercises",
+    "test:e2e:solutions": "vitest run --config vitest.e2e.config.mjs --dir src/solutions",
+    "test:e2e:exercises": "vitest run --config vitest.e2e.config.mjs --dir src/exercises",
+    "test:w:e2e:exercises": "vitest watch --config vitest.e2e.config.mjs --dir src/exercises",
+    "typecheck": "tsc --noEmit",
+    "typecheck:w": "tsc --noEmit --watch",
+    "api:solutions": "node src/solutions/2-api/main.ts",
+    "api:exercises": "node --watch src/exercises/2-api/main.ts",
+    "prepare": "effect-tsgo patch --oxlint"
+  },
+  "devDependencies": {
+    "@effect/tsgo": "0.44.0",
+    "@types/node": "24.0.0",
+    "oxlint": "1.82.0",
+    "oxlint-tsgolint": "7.0.2001",
+    "prettier": "3.9.6",
+    "typescript": "7.0.2",
+    "vitest": "5.0.0"
+  },
+  "dependencies": {
+    "@effect/platform-node": "4.0.0-rc.113",
+    "effect": "4.0.0-rc.113"
+  }
+}
