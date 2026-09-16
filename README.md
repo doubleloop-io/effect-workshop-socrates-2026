@@ -42,6 +42,8 @@ Then run the tests and verify they are failing:
 pnpm run test:api:e2e
 ```
 
+Before starting, set up your [editor/IDE](#editoride-setup) to enable the [Effect LSP](https://effect.website/docs/v4/getting-started/devtools).
+
 ## Part 1: Effect basics
 
 An introduction to the core concepts of Effect that you will need to build the HTTP API later on.
