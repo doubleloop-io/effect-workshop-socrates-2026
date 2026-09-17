@@ -33,6 +33,7 @@ declare const loadTodosPromise: () => Promise<Todo[]>
         return todos
     }
 }
+
 // 2. Effect with pipelines
 {
     const program = pipe(
