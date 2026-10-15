@@ -5,11 +5,15 @@ import * as Config from "effect/Config"
 import * as Layer from "effect/Layer"
 import * as HttpRouter from "effect/unstable/http/HttpRouter"
 import { WorkshopApiRouter } from "./router.ts"
+import { InMemoryWorkshopRepositoryLive } from "./layers.ts"
 
 const ServerLive = NodeHttpServer.layerConfig(() => createServer(), {
     port: Config.Port("PORT").pipe(Config.withDefault(3000)),
 })
 
-const MainLive = HttpRouter.serve(WorkshopApiRouter).pipe(Layer.provide(ServerLive))
+const MainLive = HttpRouter.serve(WorkshopApiRouter).pipe(
+    Layer.provide(ServerLive),
+    Layer.provide(InMemoryWorkshopRepositoryLive),
+)
 
 NodeRuntime.runMain(Layer.launch(MainLive))
