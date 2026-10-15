@@ -72,7 +72,7 @@ type UserEncoded = typeof User.Encoded
 
 // 5. How can I customize a Schema validation?
 {
-    const AccessToken = Schema.String.check(Schema.isStartsWith("wt_"))
+    const AccessToken = Schema.String.check(Schema.isStartingWith("wt_"))
     type AccessToken = typeof AccessToken.Type
 
     const decode = Schema.decodeUnknownResult(AccessToken)
@@ -83,7 +83,7 @@ type UserEncoded = typeof User.Encoded
 
 // 6. Use custom schemas
 {
-    const AccessToken = Schema.String.check(Schema.isStartsWith("wt_"))
+    const AccessToken = Schema.String.check(Schema.isStartingWith("wt_"))
 
     const User = Schema.Struct({
         name: Schema.String,
@@ -95,7 +95,7 @@ type UserEncoded = typeof User.Encoded
 
 // BONUS 7. New type pattern with branded types
 {
-    const AccessToken = Schema.String.check(Schema.isStartsWith("wt_")).pipe(
+    const AccessToken = Schema.String.check(Schema.isStartingWith("wt_")).pipe(
         Schema.brand("AccessToken"),
     )
     type AccessToken = typeof AccessToken.Type
