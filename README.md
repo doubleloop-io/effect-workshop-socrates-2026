@@ -67,7 +67,7 @@ You will build an HTTP API that allows a user to list workshops, view their deta
 
 ![HTTP API diagram overview](./slides/public/http-api-overview.png)
 
-The [end-to-end tests](./src/common/api-e2e-tests.ts) have two purposes: they verify your implementation, and they
+The [end-to-end tests](./src/exercises/2-api/api.e2e.test.ts) have two purposes: they verify your implementation, and they
 document the contract of each endpoint, for both successful and error responses.
 
 Once you've read them, start writing code in [src/exercises/2-api/router.ts](./src/exercises/2-api/router.ts)!
