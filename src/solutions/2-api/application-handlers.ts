@@ -1,7 +1,7 @@
 import * as Effect from "effect/Effect"
 import * as Option from "effect/Option"
 import { AlreadyRegistered, Registration, Workshop, WorkshopFull, WorkshopId } from "./domain.ts"
-import { RegistrationRepository, WorkshopCatalog } from "./services.ts"
+import { RegistrationRepository, WorkshopRepository } from "./services.ts"
 import {
     RegistrationRequest,
     RegistrationResponse,
@@ -11,8 +11,8 @@ import {
 import * as Clock from "effect/Clock"
 
 export const listWorkshops = Effect.gen(function* () {
-    const workshopCatalog = yield* WorkshopCatalog
-    const workshops = yield* workshopCatalog.loadAll
+    const workshopRepository = yield* WorkshopRepository
+    const workshops = yield* workshopRepository.loadAll
     return workshops.map(toWorkshopItem)
 })
 
@@ -21,9 +21,9 @@ const toWorkshopItem = (x: Workshop) =>
 
 export const getWorkshop = (workshopId: WorkshopId) =>
     Effect.gen(function* () {
-        const workshopCatalog = yield* WorkshopCatalog
+        const workshopRepository = yield* WorkshopRepository
         const registrationRepository = yield* RegistrationRepository
-        const workshop = yield* workshopCatalog.loadById(workshopId)
+        const workshop = yield* workshopRepository.loadById(workshopId)
         const registrationCount =
             yield* registrationRepository.countWorkshopRegistrations(workshopId)
 
@@ -37,10 +37,10 @@ export const getWorkshop = (workshopId: WorkshopId) =>
 
 export const register = (workshopId: WorkshopId, request: RegistrationRequest) =>
     Effect.gen(function* () {
-        const workshopCatalog = yield* WorkshopCatalog
+        const workshopRepository = yield* WorkshopRepository
         const registrationRepository = yield* RegistrationRepository
 
-        const workshop = yield* workshopCatalog.loadById(workshopId)
+        const workshop = yield* workshopRepository.loadById(workshopId)
         const existingRegistration = yield* registrationRepository.findByWorkshopAndEmail(
             workshopId,
             request.email,

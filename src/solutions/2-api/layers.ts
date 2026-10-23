@@ -3,9 +3,9 @@ import * as Layer from "effect/Layer"
 import * as Option from "effect/Option"
 import { staticWorkshops } from "../../common/static-workshops.ts"
 import { type Registration, WorkshopNotFound } from "./domain.ts"
-import { RegistrationRepository, WorkshopCatalog } from "./services.ts"
+import { RegistrationRepository, WorkshopRepository } from "./services.ts"
 
-export const InMemoryWorkshopCatalogLive = Layer.succeed(WorkshopCatalog, {
+export const InMemoryWorkshopRepositoryLive = Layer.succeed(WorkshopRepository, {
     loadAll: Effect.succeed(staticWorkshops),
     loadById: (workshopId) =>
         Effect.suspend(() => {
