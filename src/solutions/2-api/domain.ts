@@ -13,6 +13,8 @@ export const Workshop = Schema.Struct({
     title: Schema.NonEmptyString,
     startsAt: Schema.Date,
     capacity: Schema.Int.check(Schema.isGreaterThan(0)),
+    organizerEmail: Email,
+    createdAt: Schema.Date,
 }).annotate({ identifier: "Workshop" })
 
 export type Workshop = typeof Workshop.Type
